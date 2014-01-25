@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--The viewport meta tag is used to improve the presentation and behavior of the samples 
+    on iOS devices-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/dojo/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>CERT Membership Form</title>
+</head>
+
+<body class="claro">
+
+
+    <div class="container">
+
+        <div class="row gutters">
+            <div class="col span_12">
+                <h1><img class="logo" src="images/logo.jpg" /> Example CERT Membership Data Entry Form</h1>
+            </div>
+        </div>
+        
+
+        <div class="row gutters">
+            <div class="col span_7">
+                <div id="map">
+                    <span id="info" style="position: absolute; right: 150px; bottom: 5px; color: rgb(0, 0, 0); z-index: 50;"></span>
+                </div>
+
+            </div>
+
+            <div class="col span_5">
+                <h2>Location</h2>
+                <div>
+                    <span style="font-weight : bold;">Enter Your Address</span>
+                </div>
+                <div>
+                    <input name="txtAddress" type="text" dojotype="dijit.form.TextBox" data-dojo-props="placeHolder: '*Address or Point of Interest'" id="txtAddress" style="width:300px;" />
+                </div>
+                <div>
+                    <input type="button" dojotype="dijit.form.Button" name="btnAddress" label="Find Location" onclick="javascript:doAddressSearchSL(dojo.byId('txtAddress').value)" id="btnAddress" />
+                </div>
+
+                Or Click on the Map</br>
+
+                <label id="latitudeLabel" for="latitude">Mouse Latitude:</label>
+                <input style="width: 5em;" value="0" dojotype="dijit.form.TextBox" id="latitude" readonly="readonly" type="text">
+                <br>
+
+                <label id="longitudeLabel" for="longitude">Mouse Longitude:</label>
+                <input style="width: 5em;" value="0" dojotype="dijit.form.TextBox" id="longitude" readonly="readonly" type="text">
+                <br>
+            </div>
+        </div>
+
+        <div class="row gutters">
+
+            <div class="col span_12">
+
+                <form id="form1" name="form1">
+                    <p>
+                        <label id="latitudePtLabel" for="latitudeClick">Latitude Clicked:</label>
+                        <input style="width: 5em;" value="" dojotype="dijit.form.TextBox" id="latitudeClick" name="latitudeClick" readonly="readonly" type="text">
+                        <br>
+                        <label id="longitudePtLabel" for="longitudeClick">Longitude Clicked:</label>
+                        <input style="width: 5em;" value="" dojotype="dijit.form.TextBox" id="longitudeClick" name="longitudeClick" readonly="readonly" type="text">
+                        <br>
+                    </p>
+                    <h2>Mission Information</h2>
+                    <p>
+                        <b>* First Name:&nbsp;</b>
+                        <input name="FirstName" size="10" maxlength="15" type="text">
+                        <b>&nbsp;&nbsp; * Last Name:</b>
+                        <input name="LastName" size="10" maxlength="20" type="text">
+                    </p>
+                    <p>
+                        <b>CERT Name:</b>
+                        <input name="CERT_Team" size="45" maxlength="50" type="text">&nbsp;</p>
+                    <p>
+                        <b>Address:</b>
+                        <br>
+                        <input name="Address" size="45" maxlength="50" type="text">
+                    </p>
+                    <p>
+                        <b>City:</b>
+                        <input name="City" size="20" maxlength="36" type="text">&nbsp;&nbsp;
+                        <b>&nbsp;State:</b>
+                        <input name="State" size="2" maxlength="2" type="text">
+                        <b>&nbsp;&nbsp;&nbsp; Zip:</b>
+                        <input name="Zip" size="5" maxlength="10" type="text">
+                    </p>
+                    <p>
+                        <b>CERT Training:</b>
+                        <input name="CERT_Training" size="20" maxlength="20" type="text">&nbsp;
+                        <b></b>
+                    </p>
+                    <p>
+                        <b>&nbsp;Years Certified:</b>
+                        <input name="Year_Cert" size="20" maxlength="40" type="text">
+                    </p>
+                    <span class="medium_header"></span>
+                </form>
+                <table cellpadding="5" cellspacing="5">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" align="center" valign="top">
+                                <p>
+                                    <!--<input type="submit" value="Submit Report" name="submit" />-->
+                                    <button data-dojo-type="dijit.form.Button" type="button">Submit Report
+                                        <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                                            // Do something:
+                                            submitForm();
+                                        </script>
+                                    </button>&nbsp;&nbsp;
+                                    <input value="Reset Form" name="reset" type="reset">
+                                </p>
+                                <p>Thank you for your submitting your report!</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>&nbsp;</p>
+                <div id="output"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+        var djConfig = {
+            parseOnLoad: true
+          };
+    </script>
+    <script src="http://js.arcgis.com/3.8/"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
